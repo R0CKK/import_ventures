@@ -1,0 +1,121 @@
+.my-orders-page {
+  padding: 2rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.orders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.order-card {
+  background: rgba(20, 27, 46, 0.5);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: var(--transition);
+}
+
+.order-card:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0, 212, 255, 0.1);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--muted);
+}
+
+.order-id {
+  font-weight: var(--font-weight-semibold);
+  color: var(--foreground);
+}
+
+.order-details {
+  margin-bottom: 1rem;
+}
+
+.order-date, .order-items, .order-total {
+  margin-bottom: 0.5rem;
+  color: var(--muted-foreground);
+}
+
+.order-status-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.status-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.status-label {
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+  margin-bottom: 0.25rem;
+}
+
+.status-paid, .status-delivered {
+  color: #10b981;
+  font-weight: var(--font-weight-medium);
+}
+
+.status-pending {
+  color: #f59e0b;
+  font-weight: var(--font-weight-medium);
+}
+
+.order-actions {
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid var(--muted);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: rgba(20, 27, 46, 0.5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--foreground);
+}
+
+.empty-illustration {
+  font-size: 3rem;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1rem;
+}
+
+.empty-state h3 {
+  margin: 0.75rem 0 0.25rem 0;
+}
+
+.empty-state p {
+  margin-bottom: 1rem;
+  color: var(--muted-foreground);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .orders-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .order-status-info {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

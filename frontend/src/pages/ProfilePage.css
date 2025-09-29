@@ -1,0 +1,279 @@
+.profile-page {
+  padding: 1rem 0;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Utility tweaks for better contrast and accessibility */
+.helper-text {
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: #6b7280; /* muted */
+}
+
+.form-input:focus,
+.form-control:focus,
+.btn:focus {
+  outline: 2px solid #2563eb; /* blue-600 */
+  outline-offset: 2px;
+}
+
+.btn.btn-outline {
+  background: transparent;
+  border: 1px solid #d1d5db;
+  color: #374151;
+}
+
+.btn.btn-outline:hover {
+  background: #f9fafb;
+}
+
+.profile-page .bg-card {
+  background: transparent; /* remove odd background behind text */
+  box-shadow: none;
+}
+
+.text-muted {
+  color: #6b7280;
+}
+
+.profile-page .border-border {
+  border-color: transparent; /* remove borders for a cleaner compact look */
+}
+
+.bg-muted {
+  background: #f3f4f6;
+}
+
+.text-foreground {
+  color: #111827;
+}
+
+.bg-primary {
+  background: #2563eb;
+}
+
+.text-primary-foreground {
+  color: #ffffff;
+}
+
+.bg-secondary {
+  background: #f59e0b;
+}
+
+.text-secondary-foreground {
+  color: #111827;
+}
+
+.profile-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #eee;
+}
+
+.profile-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1rem;
+  background-color: var(--primary, #3498db);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.profile-info h2 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+.profile-info p {
+  color: #666;
+  margin: 0;
+}
+
+.profile-form {
+  margin-top: 1rem;
+}
+
+.form-group {
+  margin-bottom: 0.75rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-control,
+.form-input {
+  width: 100%;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus,
+.form-input:focus {
+  outline: none;
+  border-color: var(--primary, #3498db);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.55rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.btn-primary {
+  background-color: var(--primary, #3498db);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+.profile-section {
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  color: var(--primary, #3498db);
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid #eee;
+}
+
+.order-list {
+  list-style: none;
+  padding: 0;
+}
+
+.order-item {
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.order-id {
+  font-weight: 500;
+}
+
+.order-date {
+  color: #666;
+}
+
+.order-status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.status-pending {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-processing {
+  background-color: #cce5ff;
+  color: #004085;
+}
+
+.status-shipped {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-delivered {
+  background-color: #d1ecf1;
+  color: #0c5460;
+}
+
+/* Two-column compact layout for view mode */
+.profile-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 900px) {
+  .profile-columns { grid-template-columns: 1fr; }
+}
+
+.section-card {
+  padding: 0.5rem 0;
+}
+
+/* Definition row: label left, value right */
+.def-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  align-items: start;
+  gap: 0.5rem;
+  padding: 0.3rem 0;
+}
+
+.def-label {
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.def-value {
+  font-weight: 500;
+  word-break: break-word;
+}
+
+.section-heading {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+/* Tighten spacing for edit mode grids */
+.profile-form .grid { gap: 0.5rem; }
+.profile-form .mb-6 { margin-bottom: 0.75rem; }
+.profile-form .mb-4 { margin-bottom: 0.5rem; }
+
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .profile-avatar {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+}
