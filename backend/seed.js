@@ -139,12 +139,31 @@ const seedProducts = async () => {
         email: 'provider@example.com',
         password: 'password123',
         role: 'seller',
+        verification: {
+          isVerified: true,
+          verifiedAt: new Date()
+        },
         profile: {
-          company: 'Port Solutions India',
-          verified: true
+          company: 'Port Solutions India'
         }
       });
       console.log('Created default seller');
+    }
+
+    // Find or create a default admin user
+    let admin = await User.findOne({ role: 'admin' });
+    if (!admin) {
+      admin = await User.create({
+        name: 'Admin User',
+        email: 'admin@example.com',
+        password: 'password123',
+        role: 'admin',
+        verification: {
+          isVerified: true,
+          verifiedAt: new Date()
+        }
+      });
+      console.log('Created default admin');
     }
 
     // Add seller ID and ensure active status to each product

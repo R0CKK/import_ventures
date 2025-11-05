@@ -92,7 +92,14 @@ const ProductDetailPage = () => {
                   <span className="font-semibold">{product.seller.name.charAt(0)}</span>
                 </div>
                 <div>
-                  <div className="font-medium">{product.seller.name}</div>
+                  <div className="font-medium flex items-center">
+                    {product.seller.name}
+                    {product.seller.verification?.isVerified && (
+                      <span className="verified-badge ml-2" title="Verified Seller">
+                        <i data-lucide="check-circle" className="w-4 h-4"></i> Verified
+                      </span>
+                    )}
+                  </div>
                   <div className="text-sm text-muted">{product.seller.company?.name || 'Service Provider'}</div>
                 </div>
               </div>

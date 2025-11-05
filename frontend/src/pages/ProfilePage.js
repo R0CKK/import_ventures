@@ -159,12 +159,23 @@ const ProfilePage = () => {
                 <div className="w-24 h-24 bg-muted rounded-full flex items-center justify-center mx-auto mb-3">
                   <i data-lucide="user" className="text-2xl text-foreground"></i>
                 </div>
-                <h2 className="text-xl font-semibold">{user.name}</h2>
+                <h2 className="text-xl font-semibold flex items-center">{user.name}
+                  {user.role === 'seller' && user.verification?.isVerified && (
+                    <span className="verified-badge ml-2" title="Verified Seller">
+                      <i data-lucide="check-circle" className="w-4 h-4 mr-1"></i> Verified
+                    </span>
+                  )}
+                </h2>
                 <p className="text-muted">{user.email}</p>
                 <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium mt-2 ${
                   user.role === 'seller' ? 'bg-secondary text-secondary-foreground' : 'bg-primary text-primary-foreground'
                 }`}>
                   {user.role.charAt(0).toUpperCase() + user.role.slice(1)}
+                  {user.role === 'seller' && user.verification?.isVerified && (
+                    <span className="ml-1" title="Verified Seller">
+                      <i data-lucide="check-circle" className="w-3 h-3 inline"></i>
+                    </span>
+                  )}
                 </span>
               </div>
               

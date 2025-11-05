@@ -21,11 +21,15 @@ app.use(express.urlencoded({ extended: true }));
 const userRoutes = require('./routes/user');
 const productRoutes = require('./routes/product');
 const orderRoutes = require('./routes/order');
+const adminRoutes = require('./routes/admin');
+const adminDashboardRoutes = require('./routes/adminDashboard');
 
 // API routes
 app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/orders', orderRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/admin', adminDashboardRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from '../utils/axios';
+import { useAuth } from '../context/AuthContext';
 import './SellerDashboard.css';
 
 const SellerDashboard = () => {
+  const { user: currentUser } = useAuth();
   const [stats, setStats] = useState({
     totalProducts: 0,
     totalOrders: 0,
@@ -50,7 +52,19 @@ const SellerDashboard = () => {
   return (
     <div className="seller-dashboard">
       <div className="container">
-        <h1 className="section-title text-center mb-6">Seller Dashboard</h1>
+        <div className="flex flex-col items-center mb-6">
+          <h1 className="section-title text-center">Seller Dashboard</h1>
+          <div className="flex items-center mt-2">
+            <span className={`text-sm ${currentUser?.verification?.isVerified ? 'text-green-500' : 'text-yellow-500'}`}>
+              {currentUser?.verification?.isVerified ? 'Verified Seller' : 'Unverified Seller'}
+            </span>
+            {currentUser?.verification?.isVerified && (
+              <span className="verified-badge ml-2" title="Verified Seller">
+                <i data-lucide="check-circle" className="w-4 h-4 mr-1"></i> Verified
+              </span>
+            )}
+          </div>
+        </div>
         
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">

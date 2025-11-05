@@ -102,6 +102,14 @@ const getProductById = async (req, res) => {
 // @access  Private (Seller only)
 const createProduct = async (req, res) => {
   try {
+    // Check if the seller is verified
+    if (req.user.role === 'seller' && !req.user.verification.isVerified) {
+      return res.status(403).json({
+        success: false,
+        message: 'Seller account must be verified by admin before creating products'
+      });
+    }
+
     const { name, description, category, price, images, stock, specifications, location, tags } = req.body;
 
     const product = new Product({
@@ -155,6 +163,14 @@ const updateProduct = async (req, res) => {
       return res.status(403).json({
         success: false,
         message: 'Not authorized to update this product'
+      });
+    }
+
+    // Check if the seller is verified (if the user is a seller)
+    if (req.user.role === 'seller' && !req.user.verification.isVerified) {
+      return res.status(403).json({
+        success: false,
+        message: 'Seller account must be verified by admin before updating products'
       });
     }
 
@@ -212,6 +228,14 @@ const deleteProduct = async (req, res) => {
       return res.status(403).json({
         success: false,
         message: 'Not authorized to delete this product'
+      });
+    }
+
+    // Check if the seller is verified (if the user is a seller)
+    if (req.user.role === 'seller' && !req.user.verification.isVerified) {
+      return res.status(403).json({
+        success: false,
+        message: 'Seller account must be verified by admin before deleting products'
       });
     }
 

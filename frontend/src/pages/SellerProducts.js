@@ -62,7 +62,14 @@ const SellerProducts = () => {
             {products.map(product => (
               <div key={product._id} className="product-card">
                 <div className="product-card-content">
-                  <h3 className="product-card-title">{product.name}</h3>
+                  <h3 className="product-card-title">
+                    {product.name}
+                    {product.seller.verification?.isVerified && (
+                      <span className="verified-badge ml-2" title="Verified Seller">
+                        <i data-lucide="check-circle" className="w-3 h-3 mr-1"></i>
+                      </span>
+                    )}
+                  </h3>
                   <p className="product-card-description">
                     {product.description.length > 80 
                       ? `${product.description.substring(0, 80)}...` 

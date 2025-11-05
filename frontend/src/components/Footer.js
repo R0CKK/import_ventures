@@ -66,8 +66,13 @@ const Footer = () => {
         
         {/* Footer Bottom */}
         <div className="footer-bottom">
-          <div className="footer-bottom-content">
-            <p className="copyright">&copy; 2024 Import Ventures Marketplace. All rights reserved.</p>
+          <div className="container">
+            <p className="copyright">
+              &copy; 2024 Import Ventures Marketplace. All rights reserved.
+              <span className="footer-admin-login">
+                <a href="/admin/login" className="admin-login-link"> Admin</a>
+              </span>
+            </p>
           </div>
         </div>
       </div>

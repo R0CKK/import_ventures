@@ -151,6 +151,23 @@ const ProductListPage = () => {
                 
                 <div className="product-card-price">₹{Number(product.price).toLocaleString()}</div>
                 
+                <div className="product-seller-info flex items-center mt-2">
+                  <div className="seller-avatar w-8 h-8 rounded-full bg-muted flex items-center justify-center mr-2">
+                    <span className="text-xs font-semibold">{product.seller.name.charAt(0)}</span>
+                  </div>
+                  <div className="flex flex-col">
+                    <div className="font-medium text-xs flex items-center">
+                      {product.seller.name}
+                      {product.seller.verification?.isVerified && (
+                        <span className="verified-badge ml-1 text-xs" title="Verified Seller">
+                          <i data-lucide="check-circle" className="w-3 h-3 mr-0.5"></i> Verified
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-xs text-muted">{product.seller.company?.name || 'Provider'}</div>
+                  </div>
+                </div>
+                
                 <div className="product-card-footer">
                   <Link to={`/product/${product._id}`} className="btn btn-outline btn-sm">
                     View Details

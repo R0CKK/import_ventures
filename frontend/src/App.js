@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
+import { AdminProvider } from './context/AdminContext';
 
 // Import pages
 import HomePage from './pages/HomePage';
@@ -21,6 +22,13 @@ import AddProductPage from './pages/AddProductPage';
 import EditProductPage from './pages/EditProductPage';
 import NotFoundPage from './pages/NotFoundPage';
 
+// Import admin pages
+import AdminDashboard from './pages/AdminDashboard';
+import UserManagement from './pages/UserManagement';
+import ProductManagement from './pages/ProductManagement';
+import AdminLayout from './components/AdminLayout';
+import AdminLogin from './pages/AdminLogin';
+
 // Import common components
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -32,35 +40,44 @@ function App() {
   return (
     <AuthProvider>
       <CartProvider>
-        <Router>
-          <div className="App">
-            <Header />
-            <main>
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/products" element={<ProductListPage />} />
-                <Route path="/product/:id" element={<ProductDetailPage />} />
-                <Route path="/cart" element={<CartPage />} />
-                <Route path="/myorders" element={<MyOrdersPage />} />
-                <Route path="/checkout" element={<CheckoutPage />} />
-                <Route path="/order/:id" element={<OrderPage />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/register" element={<RegisterPage />} />
-                <Route path="/profile" element={<ProfilePage />} />
-                
-                {/* Seller Routes */}
-                <Route path="/seller/dashboard" element={<SellerDashboard />} />
-                <Route path="/seller/products" element={<SellerProducts />} />
-                <Route path="/seller/orders" element={<SellerOrders />} />
-                <Route path="/seller/products/add" element={<AddProductPage />} />
-                <Route path="/seller/products/edit/:id" element={<EditProductPage />} />
-                
-                <Route path="*" element={<NotFoundPage />} />
-              </Routes>
-            </main>
-            <Footer />
-          </div>
-        </Router>
+        <AdminProvider>
+          <Router>
+            <div className="App">
+              <Header />
+              <main>
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/products" element={<ProductListPage />} />
+                  <Route path="/product/:id" element={<ProductDetailPage />} />
+                  <Route path="/cart" element={<CartPage />} />
+                  <Route path="/myorders" element={<MyOrdersPage />} />
+                  <Route path="/checkout" element={<CheckoutPage />} />
+                  <Route path="/order/:id" element={<OrderPage />} />
+                  <Route path="/login" element={<LoginPage />} />
+                  <Route path="/register" element={<RegisterPage />} />
+                  <Route path="/profile" element={<ProfilePage />} />
+                  
+                  {/* Seller Routes */}
+                  <Route path="/seller/dashboard" element={<SellerDashboard />} />
+                  <Route path="/seller/products" element={<SellerProducts />} />
+                  <Route path="/seller/orders" element={<SellerOrders />} />
+                  <Route path="/seller/products/add" element={<AddProductPage />} />
+                  <Route path="/seller/products/edit/:id" element={<EditProductPage />} />
+                  
+                  {/* Admin Routes - all need to be wrapped with AdminLayout */} 
+                  <Route path="/admin/login" element={<AdminLogin />} />
+                  <Route path="/admin/dashboard" element={<AdminLayout><AdminDashboard /></AdminLayout>} />
+                  <Route path="/admin/users" element={<AdminLayout><UserManagement /></AdminLayout>} />
+                  <Route path="/admin/products" element={<AdminLayout><ProductManagement /></AdminLayout>} />
+                  <Route path="/admin" element={<AdminLayout><AdminDashboard /></AdminLayout>} />
+                  
+                  <Route path="*" element={<NotFoundPage />} />
+                </Routes>
+              </main>
+              <Footer />
+            </div>
+          </Router>
+        </AdminProvider>
       </CartProvider>
     </AuthProvider>
   );

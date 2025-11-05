@@ -49,11 +49,28 @@ const registerUser = async (req, res) => {
     }
 
     // Create user
+    // If the user is a seller, set verification status to pending
+    const newUserRole = role || 'buyer';
+    let verificationStatus = false;
+    
+    // For sellers, set verification to pending (not verified)
+    // For buyers and admins, they can be immediately active
+    if (newUserRole === 'seller') {
+      verificationStatus = false; // Seller needs admin verification
+    } else {
+      verificationStatus = true; // Buyers and admins don't need verification
+    }
+
     const user = await User.create({
       name,
       email,
       password,
-      role: role || 'buyer'
+      role: newUserRole,
+      verification: {
+        isVerified: verificationStatus,
+        verificationToken: null,
+        verifiedAt: verificationStatus ? new Date() : null
+      }
     });
 
     // Generate token
