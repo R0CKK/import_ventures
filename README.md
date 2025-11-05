@@ -323,59 +323,7 @@ If you have any questions or encounter issues with the application, please open 
 
 ---
 
-# Instructions for Uploading to GitHub
 
-To upload this project to the GitHub repository at https://github.com/R0CKK/import_ventures, follow these steps:
-
-## 1. Initialize Git in the Project Directory
-Open your terminal or command prompt and navigate to the project root directory:
-```bash
-cd C:\Users\ragha\Downloads\Port Information Website - Simplified
-```
-
-Initialize a new Git repository:
-```bash
-git init
-```
-
-## 2. Add Remote Repository
-Add the GitHub repository as a remote:
-```bash
-git remote add origin https://github.com/R0CKK/import_ventures.git
-```
-
-## 3. Stage All Files
-Stage all the files in your project:
-```bash
-git add .
-```
-
-## 4. Commit Changes
-Commit all the staged files with a meaningful commit message:
-```bash
-git commit -m "Initial commit: Import Ventures Marketplace project"
-```
-
-## 5. Create and Switch to Main Branch
-Create and switch to the main branch:
-```bash
-git branch -M main
-```
-
-## 6. Push to GitHub
-Push the committed code to the GitHub repository:
-```bash
-git push -u origin main
-```
-
-## 7. Verify Upload
-Navigate to https://github.com/R0CKK/import_ventures in your web browser to verify that your code has been successfully uploaded.
-
-## Additional Security Note
-If you're pushing to a public repository, make sure your `.env` files or any other files containing sensitive information (like API keys, database passwords) are listed in your `.gitignore` file and not included in the upload. 
-
-For this project, ensure that the following files/directories are in your `.gitignore`:
-```
 node_modules/
 .env
 .env.local
